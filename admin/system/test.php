@@ -7,11 +7,6 @@ class test {
 	private $pass_score;
 	private $time;
 
-
-	// public function isLogged() {
-	// 	return isset($this->test_id);
-	// }
-
 	public function getId() {
 		return $this->test_id;
 	}
