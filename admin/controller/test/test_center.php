@@ -1,8 +1,8 @@
 <?php
-	class ControllerUserTestCenter extends Controller {
+	class ControllerTestTestCenter extends Controller {
 		function index() {
-			$model_test_testcenter = $this->loadModel("test/test_center");
-			$userTest = $model_test_testcenter->getAllTest();
+			$model_user_test = $this->loadModel("test/test_center");
+			$userTest = $model_user_test->getAllTest();
 			include('view/common/header.php');
 			include('view/test/test_center.php');
 			include('view/common/footer.php');			
@@ -25,24 +25,17 @@
 				'time' => $_POST['time']
 			);
 
-			$model_test_new_test = $this->loadModel("test/test_center");
-			$model_test_new_test->insertTest($new_test);
+			$model_user_new_test = $this->loadModel("test/test_center");
+			$model_user_new_test->insertTest($new_test);
 
 			header('Location: http://localhost/php_assignment/admin/index.php?route=test/test_center');
 
 		}
 
 		function viewTest($test_id){
-			// echo $test_id;
 
-			$model_test_test_view = $this->loadModel("test/test_center");
-			$showTest = $model_test_test_view->getQuestion($test_id);
-
-			// echo "<ul>";
-			// foreach ($showTest as $rows){
-			// 	echo "<li>".$rows['question'] ."</li><br>";
-			// }
-			// echo "</ul>";
+			$model_user_test_view = $this->loadModel("test/test_center");
+			$showTest = $model_user_test_view->getQuestion($test_id);
 			
 			include('view/common/header.php');
 			include('view/test/test_question.php');
@@ -54,8 +47,8 @@
 
 			// echo $question_id;
 
-			$model_test_test_answer = $this->loadModel("test/test_center");
-			$showAnswer = $model_test_test_answer->getAnswer($question_id);
+			$model_user_test_answer = $this->loadModel("test/test_center");
+			$showAnswer = $model_user_test_answer->getAnswer($question_id);
 
 			// echo "<ul>";
 			// foreach ($showAnswer as $rows){
@@ -76,8 +69,8 @@
 		function deleteTest($test_id){
 			//Enable-Disable test (status) in DB
 			//echo $test_id;
-			$model_test_test_status = $this->loadModel("test/test_center");
-			$model_test_test_status->statusTest($test_id);
+			$model_user_test_status = $this->loadModel("test/test_center");
+			$model_user_test_status->statusTest($test_id);
 
 			header('Location: http://localhost/php_assignment/admin/index.php?route=test/test_center');
 		}

@@ -12,6 +12,7 @@ class Setup {
 		require('system/controller.php');
 		require('system/model.php');
 		require('system/user.php');
+		require('system/test.php');
 
 		if (isset($_GET['route'])) {
 			$route = $_GET['route'];

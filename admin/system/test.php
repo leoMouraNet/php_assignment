@@ -1,11 +1,14 @@
 <?php 
 class test {
-	private $name;
-	private $description;
 	private $test_id;
+	private $name;
+	private $category_id;
+	private $image;
+	private $description;
 	private $total_question;
 	private $pass_score;
 	private $time;
+	private $status;
 
 	public function getId() {
 		return $this->test_id;
@@ -13,6 +16,14 @@ class test {
 
 	public function getName() {
 		return $this->name;
+	}
+
+	public function getCategoryId() {
+		return $this->category_id;
+	}
+
+	public function getImage() {
+		return $this->image;
 	}
 
 	public function getDescription(){
@@ -31,6 +42,10 @@ class test {
 		return $this->time;
 	}
 
+	public function getStatus(){
+		return $this->status;
+	}
+
 	public function setTest($data) {
 		if (isset($data['test_id'])) {
 			$this->test_id = $data['test_id'];
@@ -42,6 +57,18 @@ class test {
 			$this->name = $data['name'];
 		} else {
 			$this->name = "";
+		}
+
+		if (isset($data['category_id'])) {
+			$this->category_id = $data['category_id'];
+		} else {
+			$this->category_id = 0;
+		}
+
+		if (isset($data['image'])) {
+			$this->image = $data['image'];
+		} else {
+			$this->image = "default.jpg";
 		}
 
 		if (isset($data['description'])) {
@@ -66,6 +93,12 @@ class test {
 			$this->time = $data['time'];
 		}else {
 			$this->time = 0;
+		}
+
+		if (isset($data['status'])){
+			$this->status = $data['status'];
+		}else {
+			$this->status = 1;
 		}
 
 	}	
