@@ -1,21 +1,21 @@
 <?php
 class ModelStudentTest extends Model {
-	function getAllTests() {
+	function getAllTest() {
 		$student_id = $this->student->getID();
-		$tests = $this->query("SELECT * FROM test where student_id = '" . (int)$student_id . "'");
+		$tests = $this->query("SELECT * FROM student_test where student_id = '" . (int)$student_id . "'");
 		return $tests->rows;
 	}
 
 	function getTest($test_id) {
 		$student_id = $this->student->getID();
-		$test = $this->query("SELECT * FROM test where test_id = '". (int)$test_id . "' AND student_id = '" . (int)$student_id . "'");
+		$test = $this->query("SELECT * FROM student_test where test_id = '". (int)$test_id . "' AND student_id = '" . (int)$student_id . "'");
 		return $test->row;
 	}
 
 	//Return N randon questions ($total_question) from the test_id 
 	function getQuestions($test_id, $total_question) {
 		$student_id = $this->student->getID();
-		$questions = $this->query("SELECT * FROM question WHERE test_id = '" . (int)$test_id . "' ORDER BY RAND() LIMIT " . (int)$total_question . "'");
+		$questions = $this->query("SELECT * FROM question WHERE test_id = '" . (int)$test_id . "' ORDER BY RAND() LIMIT " . (int)$total_question);
 		return $questions->rows;
 	}
 
@@ -35,6 +35,7 @@ class ModelStudentTest extends Model {
 	function startTest($test_id) {
 		$student_id = $this->student->getID();
 		$this->query("INSERT INTO student_test SET student_id = '" . (int)$student_id . "', test_id='" . (int)$test_id . "', status=1, date_start = NOW()");
+		return $this->getLastId();
 	}
 
 	//update on table student_test the test over and return if user pass (true or false)
@@ -42,5 +43,5 @@ class ModelStudentTest extends Model {
 		$student_id = $this->student->getID();
 		$this->query("UPDATE student_test SET score = '" . (int)$score . "', date_end=NOW() WHERE student_id = '" . (int)$student_id . "' AND test_id='" . (int)$test_id . "'");
 	}
-
+}
 ?>
