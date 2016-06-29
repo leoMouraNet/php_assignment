@@ -29,7 +29,7 @@ Please click the menu icon to start your certification exame.
             <td> <?php echo $rows['score']; ?></td>
             <!-- <td class="danger"> --> 
                 <?php 
-                    if ($rows['score'] > 80){ 
+                    if ($rows['score'] >= 80){ 
                       echo "<td class = success>";
                       echo "pass";
                       echo "</td>";

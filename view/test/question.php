@@ -10,7 +10,7 @@
 			<p style="margin-bottom:30px;"><?=$questions[$count]['question'];?></p>
 			<form role="form" name="questionForm" method='post' action="?route=student/question&parameter=<?=$count+1;?>">
 				<?php foreach ($options as $option) : ?>
-					<div class='radio'><label><input type='radio' name='answer' value='<?=$option['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$option['question_option_id']?'checked':'';?> /> <?=$option['description'];?> <?=$option['correct_option'];?></label></div>
+					<div class='radio'><label><input type='radio' name='answer' value='<?=$option['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$option['question_option_id']?'checked':'';?> /> <?=$option['description'];?> <?=$option['correct_option']?".":"";?></label></div>
 				<?php endforeach; ?>
 			<br>
 			<?php if($count!=0) { ?>

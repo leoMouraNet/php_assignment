@@ -4,7 +4,7 @@
       </div>
 		<form role="form" action="?route=student/register&method=insert" method="post">
       <div class="form-group">
-        <label for="first_name">Name:</label>
+        <label for="first_name">First Name:</label>
         <input type="text" class="form-control" id="first_name" name="first_name" required>
       </div>
       <div class="form-group">
