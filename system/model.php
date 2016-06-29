@@ -1,6 +1,7 @@
 <?php
 class Model {
 	private $db;
+	public $student;
 	public function __construct() {
 		$this->db = new DB(DB_HOSTNAME,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
 	}
@@ -10,11 +11,11 @@ class Model {
 	}
 
 	function escape($value) {
-		return $this->db->real_escape_string($value);
+		return $this->db->escape($value);
 	}
 
 	function getLastId() {
-		return $this->db->insert_id;
+		return $this->db->getLastId();
 	}
 }
 ?>
