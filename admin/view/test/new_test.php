@@ -1,7 +1,7 @@
       <div class="starter-template">
         <h1>Register a new test</h1>
       </div>
-		<form role="form" action="?route=user/test_center&method=addTest" method="post">
+		<form role="form" action="?route=test/test_center&method=addTest" method="post">
       <div class="form-group">
         <label for="name">Course:</label>
         <input type="text" class="form-control" id="name" name="name" required>

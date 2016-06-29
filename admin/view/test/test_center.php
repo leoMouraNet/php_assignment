@@ -7,16 +7,7 @@
       <h3>Test List</h3>
       <br>
       <div id="menu_option" align="right"> 
-                  <button type="summit" onclick="?route=user/test_center&method=showTestForm" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span> Course
-                  </button>
-
-                  <br>
-                  <br>
-                  <a href="?route=user/test_center&method=showTestForm">Add Course</a>
-                  <!-- <a href="?route=user/statistics&method=statistics">Statistics</a> -->
-
-
+                  <a href="?route=test/test_center&method=showTestForm">Add Course</a>
       </div>
       <br>
         <table class="table table-bordered">
@@ -27,6 +18,7 @@
                 <th>Description</th>
                 <th>Time (min)</th>
                 <th>Score (pts)</th>
+                <th>Status</th>
                 <th>Action</th>
           </tr>
           </thead>
@@ -40,17 +32,29 @@
                 <td> <?php echo $rows['description']; ?></td>
                 <td> <?php echo $rows['time']; ?></td>
                 <td> <?php echo $rows['pass_score']; ?></td>
-                <td>
-                  <button type="button" class="btn btn-default btn-xs">
-                  <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span> Del
-                  </button>
+                <!-- <td class="danger"> --> 
+                    <?php 
+                        if ($rows['status'] == 1){ 
+                          echo "<td class = success>";
+                          echo "On";
+                          echo "</td>";
+                        }else {
+                          echo "<td class = danger>";
+                          echo "Off";
+                          echo "</td>";
+                        }
 
-                  <button type="button" class="btn btn-default btn-xs">
-                  <span class="glyphicon glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span> Edt
-                  </button>
+                    ?>
+                <!-- </td> -->
+                <td>
+                <a href="?route=test/test_center&method=viewTest&parameter=<?php echo $rows['test_id']; ?>">View</a>
+                  <a href="?route=test/test_center&method=deleteTest&parameter=<?php echo $rows['test_id']; ?>">Del</a>
+                  <a href="?route=test/test_center&method=editTest&parameter=<?php echo $rows['test_id']; ?>">Edit</a>
                 </td>
           </tr>
         <?php endforeach;?>
+
+
         </tbody>
         </table>
 
