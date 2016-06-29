@@ -2,13 +2,13 @@
 class ModelStudentTest extends Model {
 	function getAllTest() {
 		$student_id = $this->student->getID();
-		$tests = $this->query("SELECT * FROM student_test where student_id = '" . (int)$student_id . "'");
+		$tests = $this->query("SELECT st.*, t.name, t.pass_score FROM student_test st INNER JOIN test t ON t.test_id = st.test_id where st.student_id = '" . (int)$student_id . "'");
 		return $tests->rows;
 	}
 
-	function getTest($test_id) {
+	function getTest($student_test_id) {
 		$student_id = $this->student->getID();
-		$test = $this->query("SELECT * FROM student_test where test_id = '". (int)$test_id . "' AND student_id = '" . (int)$student_id . "'");
+		$test = $this->query("SELECT st.*, t.name, t.description, t.pass_score FROM student_test st INNER JOIN test t ON t.test_id = st.test_id where st.student_test_id = '". (int)$student_test_id . "' AND st.student_id = '" . (int)$student_id . "'");
 		return $test->row;
 	}
 
@@ -42,6 +42,17 @@ class ModelStudentTest extends Model {
 	function endTest($student_test_id,$score) {
 		$student_id = $this->student->getID();
 		$this->query("UPDATE student_test SET score = '" . (int)$score . "', date_end=NOW() WHERE student_id = '" . (int)$student_id . "' AND student_test_id='" . (int)$student_test_id . "'");
+	}
+
+	function getHistoryTest($student_test_id) {
+		$sql = "SELECT sta.student_test_answer_id,q.test_id,q.question, qo.description, qo.question_option_id, (SELECT description FROM question_option ";
+		$sql .= " WHERE question_option.question_id = q.question_id and correct_option = 1) as rAnswer, sta.date_add FROM `student_test_answer` sta ";
+		$sql .= " INNER JOIN question_option qo on qo.question_option_id = sta.question_option_id ";
+		$sql .= " INNER JOIN question q on q.question_id = qo.question_id ";
+		$sql .= " WHERE sta.student_test_id = " . (int)$student_test_id;
+
+		$tests = $this->query($sql);
+		return $tests->rows;	
 	}
 }
 ?>
