@@ -52,8 +52,9 @@
             <?php if ($this->user->isLogged()) { ?>
               <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Test<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="?route=test/test_center">Edit Test</a></li>
-                  <li><a href="?route=test/history">History Tests</a></li>
+                <li><a href="?route=category/list">Category</a></li>
+                  <li><a href="?route=test/test_center">Edit</a></li>
+                  <li><a href="?route=test/history">History</a></li>
                 </ul>            
               </li>
               <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Students<span class="caret"></span></a>

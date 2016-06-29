@@ -13,11 +13,19 @@ class ModelCategoryCategory extends Model {
 	}
 
 	function insertCategory($category){
+<<<<<<< HEAD
+		$this->query("INSERT INTO category set name = '" . $category['name'] . "', image = '" . $category['image'] . "', status=1, date_add = NOW()");
+	}
+
+	function updateCategory($category) {
+		$this->query("UPDATE category set name = '" . $category['name'] . "', image = '" . $category['image'] . "', status=1 WHERE category_id = '" . (int)$category['category_id'] . "'");
+=======
 		$this->query("INSERT INTO category set name = '" . $category['name'] . "', last_name = '" . $category['last_name'] . "', email='" . $category['email'] . "', password = '" .  $category['password'] . "', phone = '" . $category['phone'] . "', address = '" . $category['address'] . "', status=1, date_add = NOW()");
 	}
 
 	function updateCategory($category) {
 		$this->query("UPDATE category set first_name = '" . $category['first_name'] . "', last_name = '" . $category['last_name'] . "', email='" . $category['email'] . "', password = '" .  $category['password'] . "', phone = '" . $category['phone'] . "', address = '" . $category['address'] . "', status=1 WHERE category_id = '" . (int)$category['category_id'] . "'");
+>>>>>>> 92cba0a4431ee2f9b5e3a867a69b7800c0eda229
 	}
 
 	function deleteCategory($category_id) {

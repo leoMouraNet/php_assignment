@@ -1,4 +1,18 @@
       <div class="starter-template">
+<<<<<<< HEAD
+        <h1>Register a new Category</h1>
+      </div>
+		<form role="form" action="?route=category/list&method=insert" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="image">Image Name with extension (e.g image.png):</label>
+        <input type="text" class="form-control" id="image" name="image" required>
+      </div>  
+		  <button type="submit" class="btn btn-default">Add</button>
+=======
         <h1>Register a new Student</h1>
       </div>
 		<form role="form" action="?route=student/list&method=insert" method="post">
@@ -31,4 +45,5 @@
         <input type="text" class="form-control" id="address" name="address" required>
       </div>  
 		  <button type="submit" class="btn btn-default">Register</button>
+>>>>>>> 92cba0a4431ee2f9b5e3a867a69b7800c0eda229
 		</form>

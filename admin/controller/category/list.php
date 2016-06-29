@@ -49,13 +49,9 @@
 
 		function save() {
 			$category = array(
-				'student_id' => $_POST['student_id'],
-				'first_name' => $_POST['first_name'],
-				'last_name' => $_POST['last_name'],
-				'email' => $_POST['email'],
-				'password' => $_POST['pwd1'],
-				'phone' => $_POST['phone'],
-				'address' => $_POST['address']
+				'category_id' => $_POST['category_id'],
+				'name' => $_POST['name'],
+				'image' => $_POST['image']
 			);
 
 			$model_category_category = $this->loadModel("category/category");
