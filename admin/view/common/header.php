@@ -58,7 +58,7 @@
                -->
               <li><a href="?route=test/test_center">Test Center</a></li>
               <li><a href="?route=test/test_center&method=showStatistics">Statistics</a></li>
-              <li><a href="?route=test/test_center&method=showCurrentTest">Current Tests</a></li>
+              <!--<li><a href="?route=test/test_center&method=showCurrentTest">Current Tests</a></li>-->
               <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="?route=user/login&method=logout">Logout</a></li>
