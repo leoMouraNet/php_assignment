@@ -13,13 +13,13 @@ class ModelTestTestCenter extends Model {
 
 
 	function getQuestion($test_id) {
-		$test = $this->query("SELECT question_id, question FROM question WHERE test_id = '" . (int)$test_id . "' ORDER BY question_id ASC");
+		$test = $this->query("SELECT question_id, question FROM question WHERE test_id = '" . (int)$test_id . "' AND status=1 ORDER BY question_id ASC");
 		return $test->rows;
 	}
 
 
 	function getAnswer($question_id){
-		$test = $this->query("SELECT question_option_id,question_id,description, correct_option  FROM question_option WHERE question_id = '" . (int)$question_id . "' ORDER BY question_option_id ASC");
+		$test = $this->query("SELECT question_option_id,question_id,description, correct_option  FROM question_option WHERE question_id = '" . (int)$question_id . "' AND STATUS=1 ORDER BY question_option_id ASC");
 		return $test->rows;
 	}
 
@@ -47,16 +47,7 @@ class ModelTestTestCenter extends Model {
 	}
 
 	function statusTest($test_id){
-		$enable = 1;
-		$disable = 0;
-
-		$actual_status = $this->query("SELECT status from test WHERE test_id = '" . (int)$test_id . "'");
-
-			if ($actual_status == 1){
-				$result = $this->query("UPDATE test set status = '" . $disable . "' WHERE test_id = '" . (int)$test_id . "'");
-			}else {
-				$result = $this->query("UPDATE test set status = '" . $enable . "' WHERE test_id = '" . (int)$test_id . "'");
-			}
+		$result = $this->query("UPDATE test set status = '0' WHERE test_id = '" . (int)$test_id . "'");
 	}
 
 //-------------------- Statistics ----------------------

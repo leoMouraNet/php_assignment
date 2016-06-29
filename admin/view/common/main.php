@@ -23,8 +23,8 @@
         foreach ($summaryTest as $rows) :?>
           <tr class="item_row">
                 <td><?php echo ++$total; ?></td>
-                <td> <?php echo $rows['name']; ?></td>
-                <td> <?php echo $rows['first_name'] . " " . $rows['last_name']; ?></td>
+                <td><?php echo $rows['name']; ?></td>
+                <td><?php echo $rows['first_name'] . " " . $rows['last_name']; ?></td>
                 <td> <?php echo $rows['score']; ?></td>
                 <!-- <td class="danger"> --> 
                     <?php 
@@ -39,8 +39,8 @@
                         } 
 
                     ?>
-                  <td> <?php echo $rows['date_end']; ?></td>
-                  <td> <a href="#">View</a> </td>
+                  <td><?php echo $rows['date_end']; ?></td>
+                  <td><a href="?route=test/history&method=viewTest&parameter=<?php echo $rows['student_test_id']; ?>">View</a></td>
                 <!-- </td> -->
           </tr>
         <?php endforeach;?>
