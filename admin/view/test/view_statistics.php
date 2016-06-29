@@ -15,6 +15,7 @@
                 <th>Student</th>
                 <th>Score (pts)</th>
                 <th>Status</th>
+                <th>Date</th>
           </tr>
           </thead>
         <tbody>
@@ -39,6 +40,7 @@
                         } 
 
                     ?>
+                  <td> <?php echo $rows['date_end']; ?></td>
                 <!-- </td> -->
           </tr>
         <?php endforeach;?>
@@ -65,7 +67,7 @@
           <tr class="item_row">
                 <td><?php  echo $passedTest['passed']; ?></td>
                 <td> <?php echo $notPassedTest['notPassed']; ?></td>
-                <td> <?php echo $avgScoreAttempted['avgScore']; ?></td>
+                <td> <?php echo number_format($avgScoreAttempted['avgScore'],2); ?></td>
                 <td> <?php echo $currentlyUsers['actualUsers']; ?></td>
           </tr>
 
