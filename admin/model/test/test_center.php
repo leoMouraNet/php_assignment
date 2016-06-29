@@ -65,8 +65,8 @@ class ModelTestTestCenter extends Model {
 		//$passedScore = 80;
 		$userPassed = $this->query("SELECT * from student_test " .
 					" INNER JOIN test ON test.test_id = student_test.test_id " .
-					" INNER JOIN student ON student.student_id = test.test_id " .
-					" ORDER BY score DESC");
+					" INNER JOIN student ON student.student_id = student_test.student_id " .
+					" ORDER BY score DESC LIMIT 5");
 		return $userPassed->rows;
 	}
 
@@ -93,13 +93,13 @@ class ModelTestTestCenter extends Model {
 	}
 
 	function userPassedTest(){
-		$userPassed = $this->query("SELECT COUNT(*) AS passed from student_test WHERE score > '80'");
+		$userPassed = $this->query("SELECT COUNT(*) AS passed from student_test WHERE score > '80' and date_end is not NULL");
 		return $userPassed->row;
 
 	}
 
 	function userNotPassedTest(){
-		$userNotPassed = $this->query("SELECT COUNT(*) AS notPassed from student_test WHERE score < '80'");
+		$userNotPassed = $this->query("SELECT COUNT(*) AS notPassed from student_test WHERE score < '80' and date_end is not NULL");
 		return $userNotPassed->row;
 	}
 
@@ -110,7 +110,7 @@ class ModelTestTestCenter extends Model {
 	}
 
 	function currentlyUsers(){
-		$currentlyUsers = $this->query("SELECT COUNT(*) AS actualUsers from student_test WHERE status = '1'");
+		$currentlyUsers = $this->query("SELECT COUNT(*) AS actualUsers from student_test WHERE date_end is NULL");
 		return $currentlyUsers->row;	
 	}
 

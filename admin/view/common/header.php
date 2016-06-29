@@ -50,15 +50,18 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.php">Home</a></li>
             <?php if ($this->user->isLogged()) { ?>
-               <!-- route=user/login&method=logout 
-                  route = path
-                  user  = folder
-                  login = file
-                  method (logout) = function
-               -->
-              <li><a href="?route=test/test_center">Test Center</a></li>
-              <li><a href="?route=test/test_center&method=showStatistics">Statistics</a></li>
-              <!--<li><a href="?route=test/test_center&method=showCurrentTest">Current Tests</a></li>-->
+              <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Test<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="?route=test/test_center">Edit Test</a></li>
+                  <li><a href="?route=test/history">History Tests</a></li>
+                </ul>            
+              </li>
+              <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Students<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="?route=student/new">New Student</a></li>
+                  <li><a href="?route=student/list">Student List</a></li>
+                </ul>            
+                </li>
               <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="?route=user/login&method=logout">Logout</a></li>
