@@ -13,7 +13,11 @@
       </div>  
       <div class="form-group">
         <label for="description">Category:</label>
-        <input type="text" class="form-control" id="category_id" name="category_id" value="<?=$test_info['category_id'];?>" required>
+        <select class="form-control" id="category_id" name="category_id" required>
+          <?php foreach ($categoryList as $category) : ?>
+            <option value="<?=$category['category_id'];?>" <?=$category['category_id']==$test_info['category_id']?'selected':'';?>><?=$category['name'];?></option>
+          <?php endforeach; ?>
+        </select>
       </div>  
       <div class="form-group">
         <label for="description">Image:</label>

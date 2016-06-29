@@ -9,6 +9,8 @@
 		}
 
 		function showTestForm(){
+			$model_category_category = $this->loadModel("category/category");
+			$categoryList = $model_category_category->getAllCategories();
 			include('view/common/header.php');
 			include('view/test/new_test.php');
 			include('view/common/footer.php');	
@@ -54,6 +56,9 @@
 		function editTest($test_id){
 			$model_test_center = $this->loadModel("test/test_center");
 			$test_info = $model_test_center->getTest($test_id);
+			$model_category_category = $this->loadModel("category/category");
+			$categoryList = $model_category_category->getAllCategories();
+			
 			include('view/common/header.php');
 			include('view/test/edit_test.php');
 			include('view/common/footer.php');				

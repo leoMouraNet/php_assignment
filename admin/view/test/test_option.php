@@ -30,7 +30,7 @@
                 <td> <?php echo $rows['correct_option']; ?></td>
                 <td>
                 <a href="?route=test/option&method=correct&parameter=<?php echo $rows['question_option_id']; ?>&question_id=<?php echo $question_id; ?>&test_id=<?=$test_id; ?>">Set Answer</a>
-                <a href="?route=test/option&method=delete&parameter=<?php echo $rows['question_option_id']; ?>&question_id=<?php echo $question_id; ?>&test_id=<?=$test_id; ?>">Del</a>
+                <a href="?route=test/option&method=delete&parameter=<?php echo $rows['question_option_id']; ?>&question_id=<?php echo $question_id; ?>&test_id=<?=$test_id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Del</a>
                 <a href="?route=test/option&method=edit&parameter=<?php echo $rows['question_option_id']; ?>&question_id=<?php echo $question_id; ?>&test_id=<?=$test_id; ?>">Edit</a>
                 </td>
           </tr>

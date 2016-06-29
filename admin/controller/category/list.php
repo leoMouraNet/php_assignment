@@ -52,7 +52,6 @@
 				'category_id' => $_POST['category_id'],
 				'name' => $_POST['name'],
 				'image' => $_POST['image']
-
 			);
 
 			$model_category_category = $this->loadModel("category/category");
