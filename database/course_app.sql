@@ -2,10 +2,10 @@
 -- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jun 27, 2016 at 11:20 PM
--- Server version: 10.1.13-MariaDB
--- PHP Version: 5.6.21
+-- Host: 127.0.0.1
+-- Generation Time: Jun 27, 2016 at 07:27 PM
+-- Server version: 5.7.9
+-- PHP Version: 5.6.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,21 +26,23 @@ SET time_zone = "+00:00";
 -- Table structure for table `category`
 --
 
-CREATE TABLE `category` (
-  `category_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE IF NOT EXISTS `category` (
+  `category_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `image` varchar(300) NOT NULL,
   `status` tinyint(1) NOT NULL,
-  `date_add` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `date_add` datetime NOT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`category_id`, `name`, `image`, `status`, `date_add`) VALUES
-(1, 'Beginner Course', 'beginner.jpg', 1, '2016-06-01 00:00:00'),
-(2, 'Advanced Course', 'advanced.jpg', 1, '2016-06-01 00:00:00');
+(1, 'Beginner Course', 'beginner.png', 1, '2016-06-01 00:00:00'),
+(2, 'Advanced Course', 'advanced.png', 1, '2016-06-01 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -48,13 +50,16 @@ INSERT INTO `category` (`category_id`, `name`, `image`, `status`, `date_add`) VA
 -- Table structure for table `question`
 --
 
-CREATE TABLE `question` (
-  `question_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `question`;
+CREATE TABLE IF NOT EXISTS `question` (
+  `question_id` int(11) NOT NULL AUTO_INCREMENT,
   `test_id` int(11) NOT NULL,
   `question` varchar(250) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `date_add` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date_add` datetime NOT NULL,
+  PRIMARY KEY (`question_id`),
+  KEY `test_id` (`test_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `question`
@@ -148,14 +153,17 @@ INSERT INTO `question` (`question_id`, `test_id`, `question`, `status`, `date_ad
 -- Table structure for table `question_option`
 --
 
-CREATE TABLE `question_option` (
-  `question_option_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `question_option`;
+CREATE TABLE IF NOT EXISTS `question_option` (
+  `question_option_id` int(11) NOT NULL AUTO_INCREMENT,
   `question_id` int(11) NOT NULL,
   `description` varchar(200) NOT NULL,
   `correct_option` tinyint(4) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `date_add` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date_add` datetime NOT NULL,
+  PRIMARY KEY (`question_option_id`),
+  KEY `question_id` (`question_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=321 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `question_option`
@@ -290,16 +298,16 @@ INSERT INTO `question_option` (`question_option_id`, `question_id`, `description
 (126, 32, 'p[lang="fr"]', 0, 1, '2016-06-26 00:00:00'),
 (127, 32, 'p[lang~="fr"]', 0, 1, '2016-06-26 00:00:00'),
 (128, 32, 'p[lang|="fr"]', 1, 1, '2016-06-26 00:00:00'),
-(129, 33, 'Embedded CSS - The <style> Element', 0, 1, '2016-06-26 00:00:00'),
+(129, 33, 'Embedded CSS - The style Element', 0, 1, '2016-06-26 00:00:00'),
 (130, 33, 'Inline CSS - The style Attribute', 0, 1, '2016-06-26 00:00:00'),
 (131, 33, 'Both of the above', 1, 1, '2016-06-26 00:00:00'),
 (132, 33, 'None of the above.', 0, 1, '2016-06-26 00:00:00'),
-(133, 34, 'External CSS - TheÂ Element', 0, 1, '2016-06-26 00:00:00'),
+(133, 34, 'External CSS - TheÂ Element', 0, 1, '2016-06-26 00:00:00'),
 (134, 34, 'Imported CSS - @import Rule', 0, 1, '2016-06-26 00:00:00'),
 (135, 34, 'Both of the above.', 1, 1, '2016-06-26 00:00:00'),
 (136, 34, 'None of the above.', 0, 1, '2016-06-26 00:00:00'),
-(137, 35, 'Any inline style sheet takes highest priority. So, it will override any rule defined inÂ tags or rules defined in any external style sheet file.', 0, 1, '2016-06-26 00:00:00'),
-(138, 35, 'Any rule defined inÂ tags will override rules defined in any external style sheet file.', 0, 1, '2016-06-26 00:00:00'),
+(137, 35, 'Any inline style sheet takes highest priority. So, it will override any rule defined inÂ tags or rules defined in any external style sheet file.', 0, 1, '2016-06-26 00:00:00'),
+(138, 35, 'Any rule defined inÂ tags will override rules defined in any external style sheet file.', 0, 1, '2016-06-26 00:00:00'),
 (139, 35, 'Any rule defined in external style sheet file takes lowest priority, and rules defined in this file will be applied only when above two rules are not applicable.', 0, 1, '2016-06-26 00:00:00'),
 (140, 35, 'All of the above.', 1, 1, '2016-06-26 00:00:00'),
 (141, 36, '%', 1, 1, '2016-06-26 00:00:00'),
@@ -489,8 +497,9 @@ INSERT INTO `question_option` (`question_option_id`, `question_id`, `description
 -- Table structure for table `student`
 --
 
-CREATE TABLE `student` (
-  `student_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `student`;
+CREATE TABLE IF NOT EXISTS `student` (
+  `student_id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(200) NOT NULL,
@@ -498,15 +507,16 @@ CREATE TABLE `student` (
   `phone` varchar(20) NOT NULL,
   `address` varchar(250) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `date_add` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date_add` datetime NOT NULL,
+  PRIMARY KEY (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `student`
 --
 
 INSERT INTO `student` (`student_id`, `first_name`, `last_name`, `email`, `password`, `phone`, `address`, `status`, `date_add`) VALUES
-(1, 'Simon', 'Gonzalez', 'simon@gmail.com', '1234', '1232456789', '77 One Street', 1, '2016-06-20 00:00:00'),
+(1, 'Simon', 'Gonzales', 'simon@gmail.com', '1234', '1232456789', '77 One Street', 1, '2016-06-20 00:00:00'),
 (2, 'Laercio', 'Moura', 'laercio.zdq@gmail.com', '1234', '123456789', '77 Huntley Street', 1, '2016-06-20 00:00:00'),
 (3, 'Kaio', 'Santos', 'kaio@gmail.com', '1234', '6478780159', '77 Huntley Street', 1, '2016-06-24 00:51:45');
 
@@ -516,14 +526,18 @@ INSERT INTO `student` (`student_id`, `first_name`, `last_name`, `email`, `passwo
 -- Table structure for table `student_test`
 --
 
-CREATE TABLE `student_test` (
-  `student_test_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `student_test`;
+CREATE TABLE IF NOT EXISTS `student_test` (
+  `student_test_id` int(11) NOT NULL AUTO_INCREMENT,
   `student_id` int(11) NOT NULL,
   `test_id` int(11) NOT NULL,
   `score` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
   `date_start` datetime NOT NULL,
-  `date_end` datetime NOT NULL
+  `date_end` datetime NOT NULL,
+  PRIMARY KEY (`student_test_id`),
+  KEY `student_id` (`student_id`),
+  KEY `test_id` (`test_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -532,11 +546,15 @@ CREATE TABLE `student_test` (
 -- Table structure for table `student_test_answer`
 --
 
-CREATE TABLE `student_test_answer` (
-  `student_test_answer_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `student_test_answer`;
+CREATE TABLE IF NOT EXISTS `student_test_answer` (
+  `student_test_answer_id` int(11) NOT NULL AUTO_INCREMENT,
   `student_test_id` int(11) NOT NULL,
   `question_option_id` int(11) NOT NULL,
-  `date_add` datetime NOT NULL
+  `date_add` datetime NOT NULL,
+  PRIMARY KEY (`student_test_answer_id`),
+  KEY `student_test_id` (`student_test_id`),
+  KEY `question_option_id` (`question_option_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -545,8 +563,9 @@ CREATE TABLE `student_test_answer` (
 -- Table structure for table `test`
 --
 
-CREATE TABLE `test` (
-  `test_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `test`;
+CREATE TABLE IF NOT EXISTS `test` (
+  `test_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   `category_id` int(11) NOT NULL,
   `image` varchar(300) NOT NULL,
@@ -555,19 +574,20 @@ CREATE TABLE `test` (
   `pass_score` int(11) NOT NULL,
   `time` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `date_add` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date_add` datetime NOT NULL,
+  PRIMARY KEY (`test_id`),
+  KEY `category_id` (`category_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `test`
 --
 
 INSERT INTO `test` (`test_id`, `name`, `category_id`, `image`, `description`, `total_question`, `pass_score`, `time`, `status`, `date_add`) VALUES
-(1, 'PHP', 2, 'php.jpg', 'Course Description, bla bla', 20, 90, 15, 0, '2016-06-26 00:00:00'),
-(2, 'CSS', 1, 'css.jpg', 'Course Description, some info ', 20, 85, 10, 1, '2016-06-26 00:00:00'),
-(3, 'JavaScript', 2, 'javascript.jpg', 'Description, Bla bla', 20, 80, 20, 1, '2016-06-26 00:00:00'),
-(4, 'HTML5', 1, 'html.jpg', 'Description, Bla bla html', 20, 90, 20, 0, '2016-06-26 00:00:00'),
-(5, 'sdfsdf', 0, '', 'sdfsdf', 23, 44, 20, 1, '2016-06-27 15:53:16');
+(1, 'PHP', 2, 'php.png', 'Course Description, bla bla', 10, 80, 20, 1, '2016-06-26 00:00:00'),
+(2, 'CSS', 1, 'css.png', 'Course Description, some info ', 10, 89, 20, 1, '2016-06-26 00:00:00'),
+(3, 'JavaScript', 2, 'javascript.png', 'Description, Bla bla', 10, 80, 20, 1, '2016-06-26 00:00:00'),
+(4, 'HTML5', 1, 'html.png', 'Description, Bla bla html', 10, 80, 20, 1, '2016-06-26 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -575,129 +595,25 @@ INSERT INTO `test` (`test_id`, `name`, `category_id`, `image`, `description`, `t
 -- Table structure for table `user1`
 --
 
-CREATE TABLE `user1` (
-  `user_id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `user1`;
+CREATE TABLE IF NOT EXISTS `user1` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
   `email` varchar(200) NOT NULL,
   `password` varchar(50) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `date_add` datetime NOT NULL
+  `date_add` datetime NOT NULL,
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user1`
+-- Constraints for dumped tables
 --
 
 INSERT INTO `user1` (`user_id`, `first_name`, `last_name`, `email`, `password`, `status`, `date_add`) VALUES
-(1, 'Simon', 'Gonzalez', 'ximonali@gmail.com', 'admin', 1, '2016-06-27 00:00:00');
+(1, 'Sr.', 'Admin', 'admin@email.com', '1234', '1232456789', '77 One Street', 1, '2016-06-20 00:00:00');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`category_id`);
-
---
--- Indexes for table `question`
---
-ALTER TABLE `question`
-  ADD PRIMARY KEY (`question_id`),
-  ADD KEY `test_id` (`test_id`);
-
---
--- Indexes for table `question_option`
---
-ALTER TABLE `question_option`
-  ADD PRIMARY KEY (`question_option_id`),
-  ADD KEY `question_id` (`question_id`);
-
---
--- Indexes for table `student`
---
-ALTER TABLE `student`
-  ADD PRIMARY KEY (`student_id`);
-
---
--- Indexes for table `student_test`
---
-ALTER TABLE `student_test`
-  ADD PRIMARY KEY (`student_test_id`),
-  ADD KEY `student_id` (`student_id`),
-  ADD KEY `test_id` (`test_id`);
-
---
--- Indexes for table `student_test_answer`
---
-ALTER TABLE `student_test_answer`
-  ADD PRIMARY KEY (`student_test_answer_id`),
-  ADD KEY `student_test_id` (`student_test_id`),
-  ADD KEY `question_option_id` (`question_option_id`);
-
---
--- Indexes for table `test`
---
-ALTER TABLE `test`
-  ADD PRIMARY KEY (`test_id`),
-  ADD KEY `category_id` (`category_id`);
-
---
--- Indexes for table `user1`
---
-ALTER TABLE `user1`
-  ADD PRIMARY KEY (`user_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `category`
---
-ALTER TABLE `category`
-  MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `question`
---
-ALTER TABLE `question`
-  MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
---
--- AUTO_INCREMENT for table `question_option`
---
-ALTER TABLE `question_option`
-  MODIFY `question_option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
---
--- AUTO_INCREMENT for table `student`
---
-ALTER TABLE `student`
-  MODIFY `student_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `student_test`
---
-ALTER TABLE `student_test`
-  MODIFY `student_test_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `student_test_answer`
---
-ALTER TABLE `student_test_answer`
-  MODIFY `student_test_answer_id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `test`
---
-ALTER TABLE `test`
-  MODIFY `test_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
---
--- AUTO_INCREMENT for table `user1`
---
-ALTER TABLE `user1`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- Constraints for dumped tables
---
 
 --
 -- Constraints for table `question`

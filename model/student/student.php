@@ -25,6 +25,7 @@ class ModelStudentStudent extends Model {
 		$result = $this->query("UPDATE student set first_name = '" . $student['first_name'] . "', last_name = '" . $student['last_name'] . "', email='" . $student['email'] . "', password = '" .  $student['password'] . "', phone = '" . $student['phone'] . "', address = '" . $student['address'] . "', status=1 WHERE student_id = '" . (int)$student['student_id'] . "'");
 	}
 
+
 }
 
 ?>
