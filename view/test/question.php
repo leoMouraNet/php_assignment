@@ -9,10 +9,10 @@
 			<h1>Question <?=$count+1;?></h1>
 			<p style="margin-bottom:30px;"><?=$questions[$count]['question'];?></p>
 			<form role="form" name="questionForm" method='post' action="?route=student/question&parameter=<?=$count+1;?>">
-			<div class='radio'><label><input type='radio' name='answer' value='<?=$options[0]['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$options[0]['question_option_id']?'checked':'';?> /> <?=$options[0]['description'];?></label></div>
-			<div class='radio'><label><input type='radio' name='answer' value='<?=$options[1]['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$options[1]['question_option_id']?'checked':'';?> /> <?=$options[1]['description'];?></label></div>
-			<div class='radio'><label><input type='radio' name='answer' value='<?=$options[2]['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$options[2]['question_option_id']?'checked':'';?> /> <?=$options[2]['description'];?></label></div>
-			<div class='radio'><label><input type='radio' name='answer' value='<?=$options[3]['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$options[3]['question_option_id']?'checked':'';?> /> <?=$options[3]['description'];?></label></div>
+			<div class='radio'><label><input type='radio' name='answer' value='<?=$options[0]['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$options[0]['question_option_id']?'checked':'';?> /> <?=$options[0]['description'];?> <?=$options[0]['correct_option'];?></label></div>
+			<div class='radio'><label><input type='radio' name='answer' value='<?=$options[1]['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$options[1]['question_option_id']?'checked':'';?> /> <?=$options[1]['description'];?> <?=$options[1]['correct_option'];?></label></div>
+			<div class='radio'><label><input type='radio' name='answer' value='<?=$options[2]['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$options[2]['question_option_id']?'checked':'';?> /> <?=$options[2]['description'];?> <?=$options[2]['correct_option'];?></label></div>
+			<div class='radio'><label><input type='radio' name='answer' value='<?=$options[3]['question_option_id'];?>' <?=isset($answer[$count]) && $answer[$count]==$options[3]['question_option_id']?'checked':'';?> /> <?=$options[3]['description'];?> <?=$options[3]['correct_option'];?></label></div>
 			<br>
 			<?php if($count!=0) { ?>
 				<a class="btn btn-success" href="?route=student/question&parameter=<?=$count-1;?>">Previous</a>
@@ -21,6 +21,6 @@
 			</form>
 	<?php } else { ?>
 			<p>Finish your Test and check your score!</p>
-			<a class="btn btn-success" href="?route=test/test&method=end&parameter=<?=$student_test_id;?>">End Test</a>
+			<a class="btn btn-success" href="?route=test/test&method=end">End Test</a>
 	<?php } ?>
 		</div>

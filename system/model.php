@@ -11,11 +11,11 @@ class Model {
 	}
 
 	function escape($value) {
-		return $this->db->real_escape_string($value);
+		return $this->db->escape($value);
 	}
 
 	function getLastId() {
-		return $this->db->insert_id;
+		return $this->db->getLastId();
 	}
 }
 ?>

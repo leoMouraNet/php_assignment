@@ -28,7 +28,7 @@ class ModelStudentTest extends Model {
 	//insert the answer chose
 	function setAnswer($question) {
 		$student_id = $this->student->getID();
-		$this->query("INSERT INTO student_test_answer student_test_id = '" . (int)$question['student_test_id'] . "', question_id = '" . (int)$question['question_id'] . ", question_option_id = '" . (int)$question['question_option_id'] . "', date_add=NOW()");
+		$this->query("INSERT INTO student_test_answer SET student_test_id = '" . (int)$question['student_test_id'] . "', question_option_id = '" . (int)$question['question_option_id'] . "', date_add=NOW()");
 	}
 
 	//insert on table student_test which test and student starting
@@ -39,9 +39,9 @@ class ModelStudentTest extends Model {
 	}
 
 	//update on table student_test the test over and return if user pass (true or false)
-	function endTest($test_id,$score) {
+	function endTest($student_test_id,$score) {
 		$student_id = $this->student->getID();
-		$this->query("UPDATE student_test SET score = '" . (int)$score . "', date_end=NOW() WHERE student_id = '" . (int)$student_id . "' AND test_id='" . (int)$test_id . "'");
+		$this->query("UPDATE student_test SET score = '" . (int)$score . "', date_end=NOW() WHERE student_id = '" . (int)$student_id . "' AND student_test_id='" . (int)$student_test_id . "'");
 	}
 }
 ?>
