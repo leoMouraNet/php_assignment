@@ -28,7 +28,7 @@
                 <td> <?php echo $student['first_name'] . ' ' . $student['last_name']; ?></td>
                 <td> <?php echo $student['email'];?></td>
                 <td>
-                <a href="?route=student/list&method=delete&parameter=<?php echo $student['student_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Del</a>
+                <a href="?route=student/list&method=delete&parameter=<?php echo $student['student_id']; ?>">Del</a>
                 <a href="?route=student/list&method=edit&parameter=<?php echo $student['student_id']; ?>">Edit</a>
                 </td>
           </tr>

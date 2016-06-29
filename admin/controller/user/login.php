@@ -28,10 +28,7 @@
 
 		function logout(){
 			$_SESSION = array();
-			$errorMsg = "You are logout.";
-			include('view/common/header.php');
-			include('view/user/login.php');
-			include('view/common/footer.php');			
+			header('Location: http://localhost/php_assignment/admin/index.php');			
 		}
 	}
 ?>

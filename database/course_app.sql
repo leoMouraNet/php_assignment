@@ -612,7 +612,7 @@ CREATE TABLE IF NOT EXISTS `user1` (
 --
 
 INSERT INTO `user1` (`user_id`, `first_name`, `last_name`, `email`, `password`, `status`, `date_add`) VALUES
-(1, 'Sr.', 'Admin', 'admin@email.com', '1234', '1232456789', '77 One Street', 1, '2016-06-20 00:00:00');
+(1, 'Sr.', 'Admin', 'admin@email.com', '1234', 1, '2016-06-20 00:00:00');
 
 
 --

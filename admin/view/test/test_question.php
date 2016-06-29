@@ -29,7 +29,7 @@
                 <td> <?php echo $rows['question']; ?></td>
                 <td>
                 <a href="?route=test/option&parameter=<?php echo $rows['question_id']; ?>&test_id=<?php echo $test_id; ?>">View Options</a>
-                <a href="?route=test/question&method=delete&parameter=<?php echo $rows['question_id']; ?>&test_id=<?php echo $test_id; ?>">Del</a>
+                <a href="?route=test/question&method=delete&parameter=<?php echo $rows['question_id']; ?>&test_id=<?php echo $test_id; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Del</a>
                 <a href="?route=test/question&method=edit&parameter=<?php echo $rows['question_id']; ?>&test_id=<?php echo $test_id; ?>">Edit</a>
                 </td>
           </tr>

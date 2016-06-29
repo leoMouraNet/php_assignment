@@ -26,9 +26,9 @@
                 <td> <?php echo $test['date_start']; ?></td>
                 <?php
                   if ((int)$test['score']>=(int)$test['pass_score']) {
-                    echo "<td class=success>Approved</td>";
+                    echo "<td class=success>Pass</td>";
                   } else {
-                    echo "<td class=danger>Reproved</td>";
+                    echo "<td class=danger>Fail</td>";
                   }
                 ?>
                 <td>

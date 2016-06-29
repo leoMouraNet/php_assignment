@@ -54,5 +54,15 @@ class ModelStudentTest extends Model {
 		$tests = $this->query($sql);
 		return $tests->rows;	
 	}
+
+	function totalSummaryTest(){
+		$student_id = $this->student->getID();
+		$userPassed = $this->query("SELECT * from student_test " .
+					" INNER JOIN test ON test.test_id = student_test.test_id " .
+					" INNER JOIN student ON student.student_id = student_test.student_id " .
+					" WHERE student.student_id = '" . (int)$student_id . "'" .
+					" ORDER BY score DESC LIMIT 5");
+		return $userPassed->rows;
+	}	
 }
 ?>
