@@ -1,4 +1,4 @@
-<h1>Choice one category list</h1>
+<h1>Choose one category level</h1>
 <div class="row">
 	<?php
 	foreach ($categoryList as $category) : ?>

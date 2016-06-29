@@ -1,4 +1,4 @@
-<h1>Choice a test</h1>
+<h1>Choose a test</h1>
 <div class="row">
 	<?php
 	foreach ($testList as $test) : ?>

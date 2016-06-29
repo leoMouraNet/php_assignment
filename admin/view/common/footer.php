@@ -2,7 +2,7 @@
 
 
     <div id="myfooter">
-        <p> &copy; copyright 2016 </p>
+        <?="<p>&copy; " . date("Y") . " SKL Ltd.";?> 
     </div>
 
     <!-- Bootstrap core JavaScript
