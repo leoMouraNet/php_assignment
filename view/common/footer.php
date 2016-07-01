@@ -2,12 +2,7 @@
 
 
     <div id="myfooter">
-        <?php
-        if (!$this->student->isLogged()) { 
-            echo "<p>Sign-up for a free membership account now and get access to all our free courses</p>";
-        } else { 
-            echo "<p>&copy; copyright " . date("Y"); 
-        } ?>
+        <?="<p>&copy; " . date("Y") . " SKL Ltd.";?>
     </div>
 
     <!-- Bootstrap core JavaScript

@@ -34,8 +34,7 @@ class student {
 		} else {
 			$this->last_name = "";
 		}
-
-		session_start();
+		
 		$_SESSION['student'] = $this;
 	}	
 }

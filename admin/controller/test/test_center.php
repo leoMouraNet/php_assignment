@@ -9,6 +9,8 @@
 		}
 
 		function showTestForm(){
+			$model_category_category = $this->loadModel("category/category");
+			$categoryList = $model_category_category->getAllCategories();
 			include('view/common/header.php');
 			include('view/test/new_test.php');
 			include('view/common/footer.php');	
@@ -32,23 +34,12 @@
 
 		}
 
-		function viewTest($test_id){
-
-			$model_test_test_view = $this->loadModel("test/test_center");
-			$showTest = $model_test_test_view->getQuestion($test_id);
-			
-			include('view/common/header.php');
-			include('view/test/test_question.php');
-			include('view/common/footer.php');	
-
-		}
-
 		function viewAnswer($question_id){
 
 			// echo $question_id;
 
-			$model_test_test_answer = $this->loadModel("test/test_center");
-			$showAnswer = $model_test_test_answer->getAnswer($question_id);
+			$model_test_center = $this->loadModel("test/test_center");
+			$showAnswer = $model_test_center->getAnswer($question_id);
 
 			// echo "<ul>";
 			// foreach ($showAnswer as $rows){
@@ -63,20 +54,41 @@
 		}
 
 		function editTest($test_id){
-			echo $test_id;
+			$model_test_center = $this->loadModel("test/test_center");
+			$test_info = $model_test_center->getTest($test_id);
+			$model_category_category = $this->loadModel("category/category");
+			$categoryList = $model_category_category->getAllCategories();
+			
+			include('view/common/header.php');
+			include('view/test/edit_test.php');
+			include('view/common/footer.php');				
 		}
 
 		function deleteTest($test_id){
 			//Enable-Disable test (status) in DB
 			//echo $test_id;
-			$model_test_test_status = $this->loadModel("test/test_center");
-			$model_test_test_status->statusTest($test_id);
+			$model_test_center = $this->loadModel("test/test_center");
+			$model_test_center->statusTest($test_id);
 
 			header('Location: http://localhost/php_assignment/admin/index.php?route=test/test_center');
 		}
 
-		function saveTest($test_id){
+		function saveTest(){
+			$test = array(
+				'test_id'			=> $_POST['test_id'],
+				'name' 				=> $_POST['name'],
+				'description' 		=> $_POST['description'],
+				'category_id' 		=> $_POST['category_id'],
+				'image' 			=> $_POST['image'],
+				'total_question'	=> $_POST['total_question'],
+				'pass_score' 		=> $_POST['pass_score'],
+				'time'				=> $_POST['time']
+			);
 
+			$model_test_center = $this->loadModel("test/test_center");
+			$model_test_center->updateTest($test);
+
+			header('Location: http://localhost/php_assignment/admin/index.php?route=test/test_center');
 		}
 
 		function showStatistics(){

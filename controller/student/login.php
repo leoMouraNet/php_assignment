@@ -22,16 +22,15 @@
 				$student = new Student();
 				$student->setStudent($studentLogin);
 
+				$model_student_student->checkTest();
+
 				header('Location: http://localhost/php_assignment/index.php?route=common/dashboard');
 			}
 		}
 
 		function logout(){
 			$_SESSION = array();
-			$errorMsg = "You are logout.";
-			include('view/common/header.php');
-			include('view/student/login.php');
-			include('view/common/footer.php');			
+			header('Location: http://localhost/php_assignment/index.php');		
 		}
 	}
 ?>

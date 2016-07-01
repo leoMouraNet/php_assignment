@@ -9,6 +9,18 @@
       <div class="form-group">
         <label for="description">Description:</label>
         <input type="text" class="form-control" id="description" name="description" required>
+      </div>
+      <div class="form-group">
+        <label for="description">Category:</label>
+        <select class="form-control" id="category_id" name="category_id" required>
+          <?php foreach ($categoryList as $category) : ?>
+            <option value="<?=$category['category_id'];?>"><?=$category['name'];?></option>
+          <?php endforeach; ?>
+        </select>
+      </div>  
+      <div class="form-group">
+        <label for="description">Image:</label>
+        <input type="text" class="form-control" id="image" name="image" required>
       </div>  
 		  <div class="form-group">
 		    <label for="total_question">Total Questions:</label>

@@ -48,14 +48,21 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="index.php">Home</a></li>
             <?php if ($this->student->isLogged()) { ?>
-              <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student <span class="caret"></span></a>
+            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Test <span class="caret"></span></a>
               <ul class="dropdown-menu">
+                <li><a href="?route=test/category">New Test</a></li>
+                <li><a href="?route=test/history">View history</a></li>
+              </ul>
+            </li>            
+            <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Student <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="?route=student/edit">Edit Info</a></li>
                 <li><a href="?route=student/login&method=logout">Logout</a></li>
               </ul>
-            <?php } ?>  
             </li>
+            <?php } ?>  
           </ul>
         </div><!--/.nav-collapse -->
       </div>

@@ -18,7 +18,6 @@
                 <th>Description</th>
                 <th>Time (min)</th>
                 <th>Score (pts)</th>
-                <th>Status</th>
                 <th>Action</th>
           </tr>
           </thead>
@@ -32,23 +31,9 @@
                 <td> <?php echo $rows['description']; ?></td>
                 <td> <?php echo $rows['time']; ?></td>
                 <td> <?php echo $rows['pass_score']; ?></td>
-                <!-- <td class="danger"> --> 
-                    <?php 
-                        if ($rows['status'] == 1){ 
-                          echo "<td class = success>";
-                          echo "On";
-                          echo "</td>";
-                        }else {
-                          echo "<td class = danger>";
-                          echo "Off";
-                          echo "</td>";
-                        }
-
-                    ?>
-                <!-- </td> -->
                 <td>
-                <a href="?route=test/test_center&method=viewTest&parameter=<?php echo $rows['test_id']; ?>">View</a>
-                  <a href="?route=test/test_center&method=deleteTest&parameter=<?php echo $rows['test_id']; ?>">Del</a>
+                <a href="?route=test/question&parameter=<?php echo $rows['test_id']; ?>">View</a>
+                  <a href="?route=test/test_center&method=deleteTest&parameter=<?php echo $rows['test_id']; ?>" onclick="return confirm('Are you sure you want to delete this item?');">Del</a>
                   <a href="?route=test/test_center&method=editTest&parameter=<?php echo $rows['test_id']; ?>">Edit</a>
                 </td>
           </tr>
